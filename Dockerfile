@@ -1,7 +1,6 @@
 FROM fedora:41
 
 COPY asdf/ ~/.asdf
-COPY get_vs_ver.sh ~./
 
 RUN dnf update -y && \
   # Install miscellaneous dev tools
