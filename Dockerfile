@@ -1,10 +1,12 @@
 FROM fedora:41
 
 COPY asdf/ ~/.asdf
+COPY get_vs_ver.sh
 
 RUN dnf update -y && \
   # Install miscellaneous dev tools
-  dnf install bash-completion ca-certificates clang curl git git-lfs htop iputils llvm lsof nano rustup wget \
+  dnf install bash-completion ca-certificates clang curl git git-lfs \
+  htop iputils jq llvm lsof nano rustup wget \
   # Python build dependencies
   pkg-config dnf-plugins-core gcc gcc-c++ gdb lzma glibc-devel \
   libstdc++-devel openssl-devel readline-devel zlib-devel libffi-devel \
@@ -14,7 +16,7 @@ RUN dnf update -y && \
   # Setup Rust
   rustup-init -y && \
   # Pre-install vscode server to lower initial connect time. 
-  wget -O- https://aka.ms/install-vscode-server/setup.sh | sh && \
+  wget https://update.code.visualstudio.com/commit:$(sh get_vs_ver.sh)/server-linux-x64/stable && \
   # Update PATH with new installs.
   echo ". $HOME/.asdf/asdf.sh" >> ~/.bashrc && \
   echo ". $HOME/.cargo/env" >> ~/.bashrc
