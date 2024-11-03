@@ -3,7 +3,7 @@ FROM fedora:41
 COPY asdf/ ~/.asdf
 
 RUN dnf update -y && \
-  dnf install curl git rustup nano git-lfs \
+  dnf install ca-certificates curl git git-lfs nano rustup wget \
   # Python build dependencies
   pkg-config dnf-plugins-core gcc gcc-c++ gdb lzma glibc-devel \
   libstdc++-devel openssl-devel readline-devel zlib-devel libffi-devel \
