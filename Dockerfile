@@ -20,7 +20,7 @@ RUN dnf update -y && \
   # Update PATH with new installs.
   echo ". $HOME/.asdf/asdf.sh" >> ~/.bashrc && \
   echo ". $HOME/.cargo/env" >> ~/.bashrc && \
-  .~/.bashrc && \
+  . ~/.bashrc && \
   # Install latest versions through Asdf
   asdf plugin-add python && \
   asdf global python latest && \
