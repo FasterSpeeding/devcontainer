@@ -1,6 +1,6 @@
 FROM fedora:41
 
-COPY asdf/ ~/.asdf
+COPY asdf/ /root/.asdf/
 
 RUN dnf update -y && \
   # Install miscellaneous dev tools
@@ -20,10 +20,10 @@ RUN dnf update -y && \
   # Update PATH with new installs.
   echo ". $HOME/.asdf/asdf.sh" >> ~/.bashrc && \
   echo ". $HOME/.cargo/env" >> ~/.bashrc && \
-  exec $SHELL && \
+  . ~/.bashrc && \
   # Install latest versions through Asdf
   asdf plugin-add python && \
-  asdf global python latest && \
+  asdf install python latest && \
   asdf global python latest && \
   asdf plugin add nodejs https://github.com/asdf-vm/asdf-nodejs.git && \
   asdf install nodejs latest && \
