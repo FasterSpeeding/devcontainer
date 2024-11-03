@@ -1,8 +1,8 @@
 FROM fedora:41
 
-COPY asdf/ ~/.asdf/
+COPY asdf/ /root/.asdf/
 
-RUN ls -a ~/.asdf/
+RUN ls -a /root/.asdf/
 
 RUN dnf update -y && \
   # Install miscellaneous dev tools
