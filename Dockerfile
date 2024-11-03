@@ -1,6 +1,6 @@
 FROM fedora:41
 
-COPY asdf/ ~/.asdf
+COPY ./asdf ~/.asdf/
 
 RUN dnf update -y && \
   # Install miscellaneous dev tools
