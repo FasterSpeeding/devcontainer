@@ -24,7 +24,7 @@ RUN dnf update -y && \
   # Install latest versions through Asdf
   asdf plugin-add python && \
   asdf global python latest && \
-  asdf global python latest && \
+  asdf install python latest && \
   asdf plugin add nodejs https://github.com/asdf-vm/asdf-nodejs.git && \
   asdf install nodejs latest && \
   asdf global nodejs latest
