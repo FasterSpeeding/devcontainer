@@ -18,9 +18,9 @@ RUN dnf update -y && \
   # TODO: wait until Microsoft properly supports this again, all the
   # available solutions rn are hacks that Microsoft could randomly kill
   # Update PATH with new installs.
-  echo ". $HOME/.cargo/env" >> ~/.bashrc && \
   echo ". $HOME/.asdf/asdf.sh" >> ~/.bashrc && \
-  . ~/.bashrc && \
+  echo ". $HOME/.cargo/env" >> ~/.bashrc && \
+  exec $SHELL && \
   # Install latest versions through Asdf
   asdf plugin-add python && \
   asdf global python latest && \
