@@ -1,8 +1,6 @@
 FROM fedora:41
 
-COPY ./asdf $HOME/.asdf/
-
-RUN ls -a $HOME/.asdf/
+COPY asdf/ ~/.asdf
 
 RUN dnf update -y && \
   # Install miscellaneous dev tools
@@ -20,8 +18,8 @@ RUN dnf update -y && \
   # TODO: wait until Microsoft properly supports this again, all the
   # available solutions rn are hacks that Microsoft could randomly kill
   # Update PATH with new installs.
-  echo ". $HOME/.asdf/asdf.sh" >> ~/.bashrc && \
   echo ". $HOME/.cargo/env" >> ~/.bashrc && \
+  echo ". $HOME/.asdf/asdf.sh" >> ~/.bashrc && \
   . ~/.bashrc && \
   # Install latest versions through Asdf
   asdf plugin-add python && \
