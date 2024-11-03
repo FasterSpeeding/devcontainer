@@ -4,7 +4,7 @@ COPY asdf/ ~/.asdf
 
 RUN dnf update -y && \
   # Install miscellaneous dev tools
-  dnf install bash-completion ca-certificates clang curl git git-lfs htop iputils-ping lsof nano rustup wget \
+  dnf install bash-completion ca-certificates clang curl git git-lfs htop iputils llvm lsof nano rustup wget \
   # Python build dependencies
   pkg-config dnf-plugins-core gcc gcc-c++ gdb lzma glibc-devel \
   libstdc++-devel openssl-devel readline-devel zlib-devel libffi-devel \
