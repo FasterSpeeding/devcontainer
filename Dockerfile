@@ -11,6 +11,6 @@ RUN dnf update -y && \
   gdbm-libs perf expat expat-devel mpdecimal -y && \
   sudo dnf builddep python3 -y && \
   rustup-init -y && \
-  echo ". $HOME/.asdf/asdf.sh" >> ~/.bashrc
+  echo ". $HOME/.asdf/asdf.sh\n. $HOME/.cargo/env" >> ~/.bashrc
 
 WORKDIR /workspace
