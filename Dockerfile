@@ -1,7 +1,7 @@
 FROM fedora:41
 
 COPY asdf/ ~/.asdf
-COPY get_vs_ver.sh
+COPY get_vs_ver.sh ~./
 
 RUN dnf update -y && \
   # Install miscellaneous dev tools
@@ -15,8 +15,9 @@ RUN dnf update -y && \
   sudo dnf builddep python3 -y && \
   # Setup Rust
   rustup-init -y && \
-  # Pre-install vscode server to lower initial connect time. 
-  wget https://update.code.visualstudio.com/commit:$(sh get_vs_ver.sh)/server-linux-x64/stable && \
+  # Pre-install vscode server to lower initial connect time.
+  # TODO: wait until Microsoft properly supports this again, all the
+  # available solutions rn are hacks that Microsoft could randomly kill
   # Update PATH with new installs.
   echo ". $HOME/.asdf/asdf.sh" >> ~/.bashrc && \
   echo ". $HOME/.cargo/env" >> ~/.bashrc
