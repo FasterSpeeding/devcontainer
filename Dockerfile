@@ -19,6 +19,14 @@ RUN dnf update -y && \
   # available solutions rn are hacks that Microsoft could randomly kill
   # Update PATH with new installs.
   echo ". $HOME/.asdf/asdf.sh" >> ~/.bashrc && \
-  echo ". $HOME/.cargo/env" >> ~/.bashrc
+  echo ". $HOME/.cargo/env" >> ~/.bashrc && \
+  . ~/.bashrc && \
+  # Install latest versions through Asdf
+  asdf plugin-add python && \
+  asdf global python latest && \
+  asdf global python latest
+  asdf plugin add nodejs https://github.com/asdf-vm/asdf-nodejs.git && \
+  asdf install nodejs latest && \
+  asdf global nodejs latest
 
 WORKDIR /workspace
