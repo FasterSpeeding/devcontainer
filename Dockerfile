@@ -2,8 +2,6 @@ FROM fedora:41
 
 COPY asdf/ /root/.asdf/
 
-RUN ls -a /root/.asdf/
-
 RUN dnf update -y && \
   # Install miscellaneous dev tools
   dnf install bash-completion ca-certificates clang curl git git-lfs \
