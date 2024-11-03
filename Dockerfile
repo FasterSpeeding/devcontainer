@@ -2,6 +2,8 @@ FROM fedora:41
 
 COPY asdf/ ~/.asdf
 
+RUN ls -a ~/
+
 RUN dnf update -y && \
   # Install miscellaneous dev tools
   dnf install bash-completion ca-certificates clang curl git git-lfs \
@@ -20,7 +22,7 @@ RUN dnf update -y && \
   # Update PATH with new installs.
   echo ". $HOME/.asdf/asdf.sh" >> ~/.bashrc && \
   echo ". $HOME/.cargo/env" >> ~/.bashrc && \
-  exec $SHELL && \
+  .~/.bashrc && \
   # Install latest versions through Asdf
   asdf plugin-add python && \
   asdf global python latest && \
