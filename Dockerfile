@@ -30,9 +30,9 @@ RUN mv /workspace/asdf/ ~/.asdf/ && \
   # available solutions rn are hacks that Microsoft could randomly kill
   # Update PATH with new installs.
   echo "PATH=$PATH:$HOME/.homebrew/bin" >> ~/.bashrc && \
-  . ~/.bashrc && \
   echo ". $HOME/.asdf/asdf.sh" >> ~/.bashrc && \
   echo ". $HOME/.cargo/env" >> ~/.bashrc && \
+  . ~/.bashrc && \
   # Install latest versions through Asdf
   asdf plugin-add python && \
   asdf install python latest && \
