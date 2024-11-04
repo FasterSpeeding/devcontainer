@@ -20,7 +20,7 @@ COPY --chown=lucy asdf/ /workspace/asdf
 
 RUN mv /workspace/asdf/ ~/.asdf/ && \
   # Setup homebrew
-  /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)" && \
+  sudo /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)" && \
   # Setup rust
   rustup-init -y && \
   # Pre-install vscode server to lower initial connect time.
