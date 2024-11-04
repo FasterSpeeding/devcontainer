@@ -28,7 +28,6 @@ RUN mv /workspace/asdf/ ~/.asdf/ && \
   # Pre-install vscode server to lower initial connect time.
   # TODO: wait until Microsoft properly supports this again, all the
   # available solutions rn are hacks that Microsoft could randomly kill
-
   # Update PATH with new installs.
   echo ". $HOME/.asdf/asdf.sh" >> ~/.bashrc && \
   echo ". $HOME/.cargo/env" >> ~/.bashrc && \
