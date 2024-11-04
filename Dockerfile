@@ -29,10 +29,10 @@ RUN mv /workspace/asdf/ ~/.asdf/ && \
   # TODO: wait until Microsoft properly supports this again, all the
   # available solutions rn are hacks that Microsoft could randomly kill
   # Update PATH with new installs.
-  echo ". $HOME/.asdf/asdf.sh" >> ~/.bashrc && \
-  echo ". $HOME/.cargo/env" >> ~/.bashrc && \
   echo "PATH=$PATH:$HOME/.homebrew/bin" >> ~/.bashrc && \
   . ~/.bashrc && \
+  echo ". $HOME/.asdf/asdf.sh" >> ~/.bashrc && \
+  echo ". $HOME/.cargo/env" >> ~/.bashrc && \
   # Install latest versions through Asdf
   asdf plugin-add python && \
   asdf install python latest && \
