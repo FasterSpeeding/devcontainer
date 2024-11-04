@@ -21,15 +21,18 @@ COPY --chown=lucy asdf/ /workspace/asdf
 
 RUN mv /workspace/asdf/ ~/.asdf/ && \
   # Setup homebrew
-  sudo /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)" && \
+  mkdir homebrew && \
+  curl -L https://github.com/Homebrew/brew/tarball/master | tar xz --strip 1 -C $HOME/.homebrew && \
   # Setup rust
   rustup-init -y && \
   # Pre-install vscode server to lower initial connect time.
   # TODO: wait until Microsoft properly supports this again, all the
   # available solutions rn are hacks that Microsoft could randomly kill
+
   # Update PATH with new installs.
   echo ". $HOME/.asdf/asdf.sh" >> ~/.bashrc && \
   echo ". $HOME/.cargo/env" >> ~/.bashrc && \
+  echo ". $HOME/.homebrew/bin" >> ~/.bashrc && \
   . ~/.bashrc && \
   # Install latest versions through Asdf
   asdf plugin-add python && \
