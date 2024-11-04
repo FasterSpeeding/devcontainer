@@ -11,8 +11,9 @@ RUN dnf update -y && \
   gdbm-libs perf expat expat-devel mpdecimal -y && \
   sudo dnf builddep python3 -y
 
-RUN useradd -ms /bin/bash lucy
-RUN usermod -aG wheel lucy
+RUN useradd -ms /bin/bash lucy && \
+  passwd --delete lucy && \
+  usermod -aG wheel lucy
 
 USER lucy
 
