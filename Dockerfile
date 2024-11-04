@@ -24,7 +24,7 @@ RUN mv /workspace/asdf/ ~/.asdf/ && \
   mkdir $HOME/.homebrew && \
   curl -L https://github.com/Homebrew/brew/tarball/master | tar xz --strip 1 -C $HOME/.homebrew && \
   # Setup rust
-  rustup-init -y && \
+  rustup-init  --profile minimal --component clippy --component rustfmt -y && \
   # Pre-install vscode server to lower initial connect time.
   # TODO: wait until Microsoft properly supports this again, all the
   # available solutions rn are hacks that Microsoft could randomly kill
