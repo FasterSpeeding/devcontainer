@@ -18,7 +18,7 @@ USER lucy
 
 COPY asdf/ /workspace/asdf
 
-RUN mv -r /workspace/asdf/ ~/.asdf/ &&\
+RUN mv /workspace/asdf/ ~/.asdf/ && \
   # Setup rust
   rustup-init -y && \
   # Pre-install vscode server to lower initial connect time.
