@@ -16,7 +16,7 @@ RUN usermod -aG wheel lucy
 
 USER lucy
 
-COPY asdf/ /workspace/asdf
+COPY --chown=lucy asdf/ /workspace/asdf
 
 RUN mv /workspace/asdf/ ~/.asdf/ && \
   # Setup rust
