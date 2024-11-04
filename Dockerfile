@@ -20,7 +20,7 @@ COPY --chown=lucy asdf/ /workspace/asdf
 
 RUN mv /workspace/asdf/ ~/.asdf/ && \
   # Setup homebrew
-  mkdir homebrew && \
+  mkdir $HOME/.homebrew && \
   curl -L https://github.com/Homebrew/brew/tarball/master | tar xz --strip 1 -C $HOME/.homebrew && \
   # Setup rust
   rustup-init -y && \
