@@ -1,7 +1,5 @@
 FROM fedora:41
 
-COPY asdf/ /root/.asdf/
-
 RUN dnf update -y && \
   # Install miscellaneous dev tools
   dnf install bash-completion ca-certificates clang curl git git-lfs \
@@ -18,7 +16,11 @@ RUN usermod -aG wheel lucy
 
 USER lucy
 
-RUN rustup-init -y && \
+COPY asdf/ /workspace/asdf
+
+RUN mv -r /workspace/asdf/ ~/.asdf/ &&\
+  # Setup rust
+  rustup-init -y && \
   # Pre-install vscode server to lower initial connect time.
   # TODO: wait until Microsoft properly supports this again, all the
   # available solutions rn are hacks that Microsoft could randomly kill
