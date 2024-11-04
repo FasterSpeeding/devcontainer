@@ -32,7 +32,7 @@ RUN mv /workspace/asdf/ ~/.asdf/ && \
   # Update PATH with new installs.
   echo ". $HOME/.asdf/asdf.sh" >> ~/.bashrc && \
   echo ". $HOME/.cargo/env" >> ~/.bashrc && \
-  echo ". $HOME/.homebrew/bin" >> ~/.bashrc && \
+  echo "PATH=$PATH:$HOME/.homebrew/bin" >> ~/.bashrc && \
   . ~/.bashrc && \
   # Install latest versions through Asdf
   asdf plugin-add python && \
