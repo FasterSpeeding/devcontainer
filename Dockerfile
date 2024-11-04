@@ -14,7 +14,7 @@ RUN dnf update -y && \
   sudo dnf builddep python3 -y
 
 RUN useradd -ms /bin/bash lucy
-RUN usermod -aG sudo lucy
+RUN usermod -aG wheel lucy
 
 USER lucy
 
