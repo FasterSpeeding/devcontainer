@@ -9,7 +9,8 @@ RUN dnf update -y && \
   libstdc++-devel openssl-devel readline-devel zlib-devel libffi-devel \
   bzip2-devel xz-devel sqlite sqlite-devel sqlite-libs libuuid-devel \
   gdbm-libs perf expat expat-devel mpdecimal -y && \
-  sudo dnf builddep python3 -y
+  sudo dnf builddep python3 -y && \
+  dnf clean packages
 
 RUN useradd -ms /bin/bash lucy && \
   passwd --delete lucy && \
