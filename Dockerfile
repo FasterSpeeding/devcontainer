@@ -3,14 +3,14 @@ FROM fedora:41
 RUN dnf update -y && \
   # Install miscellaneous dev tools
   dnf install bash-completion ca-certificates clang curl git git-lfs \
-  htop iputils jq llvm lsof nano rustup wget \
+  htop iputils jq llvm lsof nano wget \
   # Python build dependencies
   pkg-config dnf-plugins-core gcc gcc-c++ gdb lzma glibc-devel \
   libstdc++-devel openssl-devel readline-devel zlib-devel libffi-devel \
   bzip2-devel xz-devel sqlite sqlite-devel sqlite-libs libuuid-devel \
   gdbm-libs perf expat expat-devel mpdecimal -y && \
-  sudo dnf builddep python3 -y && \
-  dnf clean packages
+  dnf builddep python3 -y && \
+  dnf clean all
 
 RUN useradd -ms /bin/bash lucy && \
   passwd --delete lucy && \
@@ -25,7 +25,10 @@ RUN mv /workspace/asdf/ ~/.asdf/ && \
   mkdir $HOME/.homebrew && \
   curl -L https://github.com/Homebrew/brew/tarball/master | tar xz --strip 1 -C $HOME/.homebrew && \
   # Setup rust
-  rustup-init  --profile minimal --component clippy --component rustfmt -y && \
+  sudo dnf install rustup
+  rustup-init --profile minimal --component clippy --component rustfmt -y && \
+  sudo dnf remove rustup && \
+  sudo dnf clean all && \
   # Pre-install vscode server to lower initial connect time.
   # TODO: wait until Microsoft properly supports this again, all the
   # available solutions rn are hacks that Microsoft could randomly kill
