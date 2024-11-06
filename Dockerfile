@@ -25,7 +25,7 @@ RUN mv /workspace/asdf/ ~/.asdf/ && \
   mkdir $HOME/.homebrew && \
   curl -L https://github.com/Homebrew/brew/tarball/master | tar xz --strip 1 -C $HOME/.homebrew && \
   # Setup rust
-  sudo dnf install rustup
+  sudo dnf install rustup && \
   rustup-init --profile minimal --component clippy --component rustfmt -y && \
   sudo dnf remove rustup && \
   sudo dnf clean all && \
