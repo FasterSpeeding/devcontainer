@@ -9,8 +9,8 @@ RUN dnf update -y && \
   libstdc++-devel openssl-devel readline-devel zlib-devel libffi-devel \
   bzip2-devel xz-devel sqlite sqlite-devel sqlite-libs libuuid-devel \
   gdbm-libs perf expat expat-devel mpdecimal -y && \
-  sudo dnf builddep python3 -y && \
-  dnf clean packages
+  dnf builddep python3 -y && \
+  dnf clean all
 
 RUN useradd -ms /bin/bash lucy && \
   passwd --delete lucy && \
@@ -18,14 +18,14 @@ RUN useradd -ms /bin/bash lucy && \
 
 USER lucy
 
-COPY --chown=lucy asdf/ /workspace/asdf
-
-RUN mv /workspace/asdf/ ~/.asdf/ && \
+RUN mkdir ~/.asdf && \
+  # Setup Asdf
+  curl -L https://github.com/asdf-vm/asdf/tarball/master | tar xz --strip 1 -C ~/.asdf && \
   # Setup homebrew
-  mkdir $HOME/.homebrew && \
-  curl -L https://github.com/Homebrew/brew/tarball/master | tar xz --strip 1 -C $HOME/.homebrew && \
+  mkdir ~/.homebrew && \
+  curl -L https://github.com/Homebrew/brew/tarball/master | tar xz --strip 1 -C ~/.homebrew && \
   # Setup rust
-  rustup-init  --profile minimal --component clippy --component rustfmt -y && \
+  rustup-init --profile minimal --component clippy --component rustfmt -y && \
   # Pre-install vscode server to lower initial connect time.
   # TODO: wait until Microsoft properly supports this again, all the
   # available solutions rn are hacks that Microsoft could randomly kill
