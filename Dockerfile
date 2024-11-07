@@ -18,11 +18,7 @@ RUN useradd -ms /bin/bash lucy && \
 
 USER lucy
 
-COPY --chown=lucy asdf/ /workspace/asdf
-
-RUN mv /workspace/asdf/ ~/.asdf/ && \
-  # Setup homebrew
-  mkdir $HOME/.homebrew && \
+RUN mkdir $HOME/.homebrew && \
   curl -L https://github.com/Homebrew/brew/tarball/master | tar xz --strip 1 -C $HOME/.homebrew && \
   # Setup rust
   rustup-init  --profile minimal --component clippy --component rustfmt -y && \
@@ -31,10 +27,11 @@ RUN mv /workspace/asdf/ ~/.asdf/ && \
   # available solutions rn are hacks that Microsoft could randomly kill
   # Update PATH with new installs.
   echo "PATH=$PATH:$HOME/.homebrew/bin" >> ~/.bashrc && \
-  echo ". $HOME/.asdf/asdf.sh" >> ~/.bashrc && \
   echo ". $HOME/.cargo/env" >> ~/.bashrc && \
   . ~/.bashrc && \
   # Install latest versions through Asdf
+  brew install asdf && \
+  brew cleanup && \
   asdf plugin-add python && \
   asdf install python latest && \
   asdf global python latest && \
