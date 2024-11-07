@@ -1,0 +1,22 @@
+{
+    "name": "Devcontainer repo",
+    "image": "ghcr.io/fasterspeeding/devcontainer:master",
+    "customizations": {
+        "vscode": {
+            "extensions": [
+                "ms-azuretools.vscode-docker",
+                "tamasfe.even-better-toml",
+                "wdhongtw.gpg-indicator",
+                "hashicorp.terraform",
+                "oderwat.indent-rainbow",
+                "yzhang.markdown-all-in-one",
+                "ms-python.vscode-pylance",
+                "ms-python.python",
+                "ms-python.debugpy",
+                "mutantdino.resourcemonitor",
+                "rust-lang.rust-analyzer",
+                "zxh404.vscode-proto3"
+            ]
+        }
+    }
+}
