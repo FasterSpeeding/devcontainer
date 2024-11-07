@@ -3,7 +3,7 @@ FROM fedora:41
 RUN dnf update -y && \
   # Install miscellaneous dev tools
   dnf install bash-completion ca-certificates clang curl git git-lfs \
-  htop iputils jq llvm lsof nano wget \
+  htop iputils jq llvm lsof nano rustup wget \
   # Python build dependencies
   pkg-config dnf-plugins-core gcc gcc-c++ gdb lzma glibc-devel \
   libstdc++-devel openssl-devel readline-devel zlib-devel libffi-devel \
@@ -18,17 +18,14 @@ RUN useradd -ms /bin/bash lucy && \
 
 USER lucy
 
-COPY --chown=lucy asdf/ /workspace/asdf
-
-RUN mv /workspace/asdf/ ~/.asdf/ && \
+RUN mkdir ~/.asdf && \
+  # Setup Asdf
+  curl -L https://github.com/asdf-vm/asdf/tarball/master | tar xz --strip 1 -C ~/.asdf && \
   # Setup homebrew
-  mkdir $HOME/.homebrew && \
-  curl -L https://github.com/Homebrew/brew/tarball/master | tar xz --strip 1 -C $HOME/.homebrew && \
+  mkdir ~/.homebrew && \
+  curl -L https://github.com/Homebrew/brew/tarball/master | tar xz --strip 1 -C ~/.homebrew && \
   # Setup rust
-  sudo dnf install rustup -y && \
   rustup-init --profile minimal --component clippy --component rustfmt -y && \
-  sudo dnf remove rustup -y && \
-  sudo dnf clean all && \
   # Pre-install vscode server to lower initial connect time.
   # TODO: wait until Microsoft properly supports this again, all the
   # available solutions rn are hacks that Microsoft could randomly kill
