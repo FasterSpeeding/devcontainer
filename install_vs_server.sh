@@ -1,3 +1,5 @@
+#!/bin/bash
+set -e
 repo=microsoft/vscode
 
 tag=$(curl -s "https://api.github.com/repos/$repo/releases/latest" | jq -r '.tag_name')
