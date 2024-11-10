@@ -18,6 +18,10 @@ RUN useradd -ms /bin/bash lucy && \
 
 USER lucy
 
+WORKDIR /workspaces
+
+COPY --chown=lucy install_vs_server.sh /workspaces/.install_vs_server.sh
+
 RUN mkdir ~/.asdf && \
   # Setup Asdf
   curl -L https://github.com/asdf-vm/asdf/tarball/master | tar xz --strip 1 -C ~/.asdf && \
@@ -27,9 +31,7 @@ RUN mkdir ~/.asdf && \
   # Setup rust
   rustup-init --profile minimal --component clippy --component rustfmt -y && \
   # Pre-install vscode server to lower initial connect time.
-  # TODO: wait until Microsoft properly supports this again, all the
-  # available solutions rn are hacks that Microsoft could randomly kill
-  # Update PATH with new installs.
+  sh /workspaces/.install_vs_server.sh && \
   echo "PATH=$PATH:$HOME/.homebrew/bin" >> ~/.bashrc && \
   echo ". $HOME/.asdf/asdf.sh" >> ~/.bashrc && \
   echo ". $HOME/.cargo/env" >> ~/.bashrc && \
