@@ -20,7 +20,7 @@ USER lucy
 
 WORKDIR /workspaces
 
-COPY --chown=lucy install_vs_server.sh /workspaces/.install_vs_server.sh
+# COPY --chown=lucy install_vs_server.sh /workspaces/.install_vs_server.sh
 
 RUN mkdir ~/.asdf && \
   # Setup Asdf
@@ -31,7 +31,7 @@ RUN mkdir ~/.asdf && \
   # Setup rust
   rustup-init --profile minimal --component clippy --component rustfmt -y && \
   # Pre-install vscode server to lower initial connect time.
-  sh /workspaces/.install_vs_server.sh && \
+  # sh /workspaces/.install_vs_server.sh && \
   # Update PATH with new installs.
   echo "PATH=$PATH:$HOME/.homebrew/bin" >> ~/.bashrc && \
   echo ". $HOME/.asdf/asdf.sh" >> ~/.bashrc && \
