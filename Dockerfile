@@ -39,8 +39,9 @@ RUN mkdir ~/.asdf && \
   . ~/.bashrc && \
   # Install latest versions through Asdf
   asdf plugin-add python && \
-  asdf install python latest && \
-  asdf global python latest && \
+  # Switch "3.13.0" to "latest" once https://github.com/asdf-community/asdf-python/issues/191 is fixed.
+  asdf install python 3.13.0 && \
+  asdf global python 3.13.0 && \
   asdf plugin add nodejs https://github.com/asdf-vm/asdf-nodejs.git && \
   asdf install nodejs latest && \
   asdf global nodejs latest
