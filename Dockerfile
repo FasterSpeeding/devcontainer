@@ -10,6 +10,9 @@ RUN dnf update -y && \
   bzip2-devel xz-devel sqlite sqlite-devel sqlite-libs libuuid-devel \
   gdbm-libs perf expat expat-devel mpdecimal -y && \
   dnf builddep python3 -y && \
+  # Python development tools
+  dnf install nox pipx uv -y && \
+  # Cleanup DNF caches
   dnf clean all
 
 RUN useradd -ms /bin/bash lucy && \
