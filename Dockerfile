@@ -11,7 +11,7 @@ RUN dnf update -y && \
   gdbm-libs perf expat expat-devel mpdecimal -y && \
   dnf builddep python3 -y && \
   # Python development tools
-  dnf install nox pipx uv -y && \
+  dnf install pipx -y && \
   # Cleanup DNF caches
   dnf clean all
 
@@ -47,4 +47,8 @@ RUN mkdir ~/.asdf && \
   asdf global python 3.13.0 && \
   asdf plugin add nodejs https://github.com/asdf-vm/asdf-nodejs.git && \
   asdf install nodejs latest && \
-  asdf global nodejs latest
+  asdf global nodejs latest && \
+  # Python development tooling
+  pipx install --pip-args=--no-cache-dir --python "$(which python)" nox[uv] uv && \
+  pipx ensurepath
+
