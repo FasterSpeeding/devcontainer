@@ -49,5 +49,6 @@ RUN mkdir ~/.asdf && \
   asdf install nodejs latest && \
   asdf global nodejs latest && \
   # Python development tooling
-  pipx install nox[uv] uv --pip-args=--no-cache-dir
+  pipx install --pip-args=--no-cache-dir --python "$(which python)" nox[uv] uv && \
+  pipx ensurepath
 
