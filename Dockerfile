@@ -24,6 +24,7 @@ USER lucy
 WORKDIR /workspaces
 
 # COPY --chown=lucy install_vs_server.sh /workspaces/.install_vs_server.sh
+COPY ./.devcontainer.json /home/lucy/devcontainer.json
 
 RUN mkdir ~/.asdf && \
   # Setup Asdf
