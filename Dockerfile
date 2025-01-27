@@ -3,7 +3,7 @@ FROM fedora:41
 RUN dnf update -y && \
   # Install miscellaneous dev tools
   dnf install bash-completion ca-certificates clang curl git git-lfs \
-  htop iputils jq llvm lsof nano rustup wget which \
+  htop iputils jq llvm lsof nano rustup wget which opentofu \
   # Python build dependencies
   pkg-config dnf-plugins-core gcc gcc-c++ gdb lzma glibc-devel \
   libstdc++-devel openssl-devel readline-devel zlib-devel libffi-devel \
