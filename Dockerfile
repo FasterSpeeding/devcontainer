@@ -1,4 +1,4 @@
-FROM fedora:42
+FROM registry.fedoraproject.org/fedora:42.20250718.0@sha256:e46630003cae8c0017cdaab33f2edfe92049cc8111e9a9174b82e4c00cb2f710
 
 RUN dnf update -y && \
   # Install miscellaneous dev tools
