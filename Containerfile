@@ -28,7 +28,7 @@ WORKDIR /workspaces
 # COPY --chown=lucy install_vs_server.sh /workspaces/.install_vs_server.sh
 COPY ./.devcontainer.json /home/lucy/devcontainer.json
 
-RUN -mount=type=bind,source=./config,target=/config,readonly \
+RUN --mount=type=bind,source=./config,target=/config,readonly \
   mkdir mkdir ~/.homebrew && \
   # Setup homebrew
   curl -L https://github.com/Homebrew/brew/tarball/master | tar xz --strip 1 -C ~/.homebrew && \
