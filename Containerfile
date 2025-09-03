@@ -26,30 +26,29 @@ WORKDIR /workspaces
 # COPY --chown=lucy install_vs_server.sh /workspaces/.install_vs_server.sh
 COPY ./.devcontainer.json /home/lucy/devcontainer.json
 
-RUN mkdir ~/.asdf && \
+RUN -mount=type=bind,source=./cache,target=/cache,readonly \
+  mkdir mkdir ~/.homebrew && \
   # Setup homebrew
-  mkdir ~/.homebrew && \
   curl -L https://github.com/Homebrew/brew/tarball/master | tar xz --strip 1 -C ~/.homebrew && \
-  echo "PATH=$PATH:$HOME/.homebrew/bin" >> ~/.bashrc && \
+  cat "/config/brew.bashrc" >> ~/.bashrc && \
   . ~/.bashrc && \
   # Setup ASDF
   brew install asdf && \
-  echp 'export PATH="${ASDF_DATA_DIR:-$HOME/.asdf}/shims:$PATH"' >>  ~/.bashrc && \
-  echp ". <(asdf completion bash)" >> && \
+  cat "/config/asdf.bashrc" >> ~/.bashrc && \
   . ~/.bashrc && \
   # Setup rust
   rustup-init --profile minimal --component clippy --component rustfmt -y && \
-  echo ". $HOME/.cargo/env" >> ~/.bashrc && \
   # Install languages through Asdf
   asdf plugin-add python && \
-  # Switch "3.13.0" to "latest" once https://github.com/asdf-community/asdf-python/issues/191 is fixed.
-  asdf install python 3.13.0 && \
-  asdf global python 3.13.0 && \
+  # Switch "3.13.7" to "latest" once https://github.com/asdf-community/asdf-python/issues/191 is fixed.
+  asdf install python 3.13.7 && \
+  asdf global python 3.13.7 && \
   asdf plugin add nodejs https://github.com/asdf-vm/asdf-nodejs.git && \
   asdf install nodejs latest && \
   asdf global nodejs latest && \
   # Python development tooling
   pipx install --pip-args=--no-cache-dir --python "$(which python)" nox[uv] uv && \
-  pipx ensurepath
+  pipx ensurepath && \
+  cat "/config/general.bashrc" >> ~/.bashrc && \
   # TODO: Pre-install vscode server to lower initial connect time.
   # sh /workspaces/.install_vs_server.sh && \
