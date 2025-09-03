@@ -9,7 +9,7 @@ RUN --mount=type=bind,source=./config,target=/config,readonly \
   # Install miscellaneous dev tools
   dnf install bash-completion bat btop ca-certificates clang curl \
   git git-lfs iputils jq llvm lsof man man-db man-pages nano openssl \
-  opentofu perl perl-devel rustup ugrep vim wget which \
+  opentofu perl perl-devel p7zip rustup ugrep vim wget which zlib \
   # Python build dependencies
   pkg-config dnf-plugins-core gcc gcc-c++ gdb lzma glibc-devel \
   libstdc++-devel openssl-devel readline-devel zlib-devel libffi-devel \
@@ -40,14 +40,15 @@ RUN --mount=type=bind,source=./config,target=/config,readonly \
   curl -L https://github.com/Homebrew/brew/tarball/master | tar xz --strip 1 -C ~/.homebrew && \
   cat "/config/brew.bashrc" >> ~/.bashrc && \
   . ~/.bashrc && \
-  # Brew install miscelanious tools
-  brew install eza && \
   # Setup ASDF
   brew install asdf && \
   cat "/config/asdf.bashrc" >> ~/.bashrc && \
   . ~/.bashrc && \
   # Setup rust
   rustup-init --profile minimal --component clippy --component rustfmt -y && \
+  cat "/config/rust.bashrc" >> ~/.bashrc && \
+  # Install Eza
+  cargo install eza && \
   # Install languages through Asdf
   asdf plugin-add python && \
   # Switch "$PYTHON_VERSION" to "latest" once https://github.com/asdf-community/asdf-python/issues/191 is fixed.
