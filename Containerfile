@@ -37,6 +37,8 @@ RUN --mount=type=bind,source=./config,target=/config,readonly \
   curl -L https://github.com/Homebrew/brew/tarball/master | tar xz --strip 1 -C ~/.homebrew && \
   cat "/config/brew.bashrc" >> ~/.bashrc && \
   . ~/.bashrc && \
+  # Brew install miscelanious tools
+  brew install eza && \
   # Setup ASDF
   brew install asdf && \
   cat "/config/asdf.bashrc" >> ~/.bashrc && \
