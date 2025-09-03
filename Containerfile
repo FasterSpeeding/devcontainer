@@ -38,8 +38,6 @@ RUN mkdir ~/.asdf && \
   . ~/.bashrc && \
   # Setup rust
   rustup-init --profile minimal --component clippy --component rustfmt -y && \
-  # Pre-install vscode server to lower initial connect time.
-  # sh /workspaces/.install_vs_server.sh && \
   # Update PATH with new installs.
   echo "PATH=$PATH:$HOME/.homebrew/bin" >> ~/.bashrc && \
   echo ". $HOME/.cargo/env" >> ~/.bashrc && \
@@ -54,4 +52,5 @@ RUN mkdir ~/.asdf && \
   # Python development tooling
   pipx install --pip-args=--no-cache-dir --python "$(which python)" nox[uv] uv && \
   pipx ensurepath
-
+  # TODO: Pre-install vscode server to lower initial connect time.
+  # sh /workspaces/.install_vs_server.sh && \
