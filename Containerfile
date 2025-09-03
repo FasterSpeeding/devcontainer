@@ -4,7 +4,7 @@ ARG PYTHON_VERSION="3.13.7"
 
 RUN --mount=type=bind,source=./config,target=/config,readonly \
   # Reconfigure dnf
-  "/config/dnf.conf" >| /etc/dnf/dnf.conf && \
+  cat "/config/dnf.conf" >| /etc/dnf/dnf.conf && \
   dnf update -y && \
   # Install miscellaneous dev tools
   dnf install bash-completion btop ca-certificates clang curl git git-lfs iputils \
