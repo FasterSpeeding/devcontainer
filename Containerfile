@@ -18,8 +18,8 @@ RUN --mount=type=bind,source=./config,target=/config,readonly \
   dnf builddep python3 -y && \
   # Python development tools
   dnf install pipx -y && \
-  # Build man pages
-  mandb -c && \
+  # Update man pages
+  mandb && \
   # Cleanup DNF caches
   dnf clean all
 
