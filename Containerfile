@@ -30,6 +30,7 @@ RUN mkdir ~/.asdf && \
   # Setup homebrew
   mkdir ~/.homebrew && \
   curl -L https://github.com/Homebrew/brew/tarball/master | tar xz --strip 1 -C ~/.homebrew && \
+  echo "PATH=$PATH:$HOME/.homebrew/bin" >> ~/.bashrc && \
   . ~/.bashrc && \
   # Setup ASDF
   brew install asdf && \
@@ -38,8 +39,6 @@ RUN mkdir ~/.asdf && \
   . ~/.bashrc && \
   # Setup rust
   rustup-init --profile minimal --component clippy --component rustfmt -y && \
-  # Update PATH with new installs.
-  echo "PATH=$PATH:$HOME/.homebrew/bin" >> ~/.bashrc && \
   echo ". $HOME/.cargo/env" >> ~/.bashrc && \
   # Install languages through Asdf
   asdf plugin-add python && \
