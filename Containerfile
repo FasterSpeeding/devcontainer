@@ -9,7 +9,7 @@ RUN --mount=type=bind,source=./config,target=/config,readonly \
   # Install miscellaneous dev tools
   dnf install bash-completion bat btop ca-certificates clang curl
   git git-lfs iputils jq llvm lsof man man-db man-pages nano openssl
-  opentofu perl-devel rustup ugrep vim wget which \
+  opentofu perl perl-devel rustup ugrep vim wget which \
   # Python build dependencies
   pkg-config dnf-plugins-core gcc gcc-c++ gdb lzma glibc-devel \
   libstdc++-devel openssl-devel readline-devel zlib-devel libffi-devel \
@@ -18,6 +18,8 @@ RUN --mount=type=bind,source=./config,target=/config,readonly \
   dnf builddep python3 -y && \
   # Python development tools
   dnf install pipx -y && \
+  # Build man pages
+  mandb -c && \
   # Cleanup DNF caches
   dnf clean all
 
