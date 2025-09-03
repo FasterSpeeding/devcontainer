@@ -2,7 +2,7 @@ FROM registry.fedoraproject.org/fedora:42.20250718.0@sha256:8f9a6d75762c70b9366d
 
 ARG PYTHON_VERSION="3.13.7"
 
-RUN echo " " >| /etc/dnf/dnf.conf && \
+RUN "/config/dnf.conf" >| /etc/dnf/dnf.conf && \
   dnf update -y && \
   # Install miscellaneous dev tools
   dnf install bash-completion ca-certificates clang curl git git-lfs \
