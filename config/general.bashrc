@@ -1,5 +1,3 @@
-. $HOME/.cargo/env
-
 # Misc aliases
 alias cat='bat --style=plain --pager=never'
 alias egrep='ug -E'
