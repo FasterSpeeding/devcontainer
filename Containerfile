@@ -2,11 +2,13 @@ FROM registry.fedoraproject.org/fedora:42.20250718.0@sha256:8f9a6d75762c70b9366d
 
 ARG PYTHON_VERSION="3.13.7"
 
-RUN "/config/dnf.conf" >| /etc/dnf/dnf.conf && \
+RUN --mount=type=bind,source=./config,target=/config,readonly \
+  # Reconfigure dnf
+  "/config/dnf.conf" >| /etc/dnf/dnf.conf && \
   dnf update -y && \
   # Install miscellaneous dev tools
-  dnf install bash-completion ca-certificates clang curl git git-lfs \
-  htop iputils jq llvm lsof nano opentofu rustup wget which \
+  dnf install bash-completion btop ca-certificates clang curl git git-lfs \
+  iputils jq llvm lsof man nano opentofu perl-devel rustup vim wget which \
   # Python build dependencies
   pkg-config dnf-plugins-core gcc gcc-c++ gdb lzma glibc-devel \
   libstdc++-devel openssl-devel readline-devel zlib-devel libffi-devel \
