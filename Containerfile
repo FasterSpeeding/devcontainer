@@ -1,5 +1,7 @@
 FROM registry.fedoraproject.org/fedora:42.20250718.0@sha256:8f9a6d75762c70b9366d70b608b93ad591140a51d755ba8a7d3d044bd9d279a4
 
+ARG PYTHON_VERSION="3.13.7"
+
 RUN dnf update -y && \
   # Install miscellaneous dev tools
   dnf install bash-completion ca-certificates clang curl git git-lfs \
@@ -40,15 +42,15 @@ RUN -mount=type=bind,source=./cache,target=/cache,readonly \
   rustup-init --profile minimal --component clippy --component rustfmt -y && \
   # Install languages through Asdf
   asdf plugin-add python && \
-  # Switch "3.13.7" to "latest" once https://github.com/asdf-community/asdf-python/issues/191 is fixed.
-  asdf install python 3.13.7 && \
-  asdf global python 3.13.7 && \
+  # Switch "$PYTHON_VERSION" to "latest" once https://github.com/asdf-community/asdf-python/issues/191 is fixed.
+  asdf install python $PYTHON_VERSION && \
+  asdf global python $PYTHON_VERSION && \
   asdf plugin add nodejs https://github.com/asdf-vm/asdf-nodejs.git && \
   asdf install nodejs latest && \
   asdf global nodejs latest && \
   # Python development tooling
   pipx install --pip-args=--no-cache-dir --python "$(which python)" nox[uv] uv && \
   pipx ensurepath && \
-  cat "/config/general.bashrc" >> ~/.bashrc && \
+  cat "/config/general.bashrc" >> ~/.bashrc
   # TODO: Pre-install vscode server to lower initial connect time.
   # sh /workspaces/.install_vs_server.sh && \
