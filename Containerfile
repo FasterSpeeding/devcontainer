@@ -27,21 +27,23 @@ WORKDIR /workspaces
 COPY ./.devcontainer.json /home/lucy/devcontainer.json
 
 RUN mkdir ~/.asdf && \
-  # Setup Asdf
-  curl -L https://github.com/asdf-vm/asdf/tarball/master | tar xz --strip 1 -C ~/.asdf && \
   # Setup homebrew
   mkdir ~/.homebrew && \
   curl -L https://github.com/Homebrew/brew/tarball/master | tar xz --strip 1 -C ~/.homebrew && \
+  . ~/.bashrc && \
+  # Setup ASDF
+  brew install asdf && \
+  echp 'export PATH="${ASDF_DATA_DIR:-$HOME/.asdf}/shims:$PATH"' >>  ~/.bashrc && \
+  echp ". <(asdf completion bash)" >> && \
+  . ~/.bashrc && \
   # Setup rust
   rustup-init --profile minimal --component clippy --component rustfmt -y && \
   # Pre-install vscode server to lower initial connect time.
   # sh /workspaces/.install_vs_server.sh && \
   # Update PATH with new installs.
   echo "PATH=$PATH:$HOME/.homebrew/bin" >> ~/.bashrc && \
-  echo ". $HOME/.asdf/asdf.sh" >> ~/.bashrc && \
   echo ". $HOME/.cargo/env" >> ~/.bashrc && \
-  . ~/.bashrc && \
-  # Install latest versions through Asdf
+  # Install languages through Asdf
   asdf plugin-add python && \
   # Switch "3.13.0" to "latest" once https://github.com/asdf-community/asdf-python/issues/191 is fixed.
   asdf install python 3.13.0 && \
