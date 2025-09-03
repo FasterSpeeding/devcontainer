@@ -7,8 +7,8 @@ RUN --mount=type=bind,source=./config,target=/config,readonly \
   cat "/config/dnf.conf" >| /etc/dnf/dnf.conf && \
   dnf update -y && \
   # Install miscellaneous dev tools
-  dnf install bash-completion bat btop ca-certificates clang curl
-  git git-lfs iputils jq llvm lsof man man-db man-pages nano openssl
+  dnf install bash-completion bat btop ca-certificates clang curl \
+  git git-lfs iputils jq llvm lsof man man-db man-pages nano openssl \
   opentofu perl perl-devel rustup ugrep vim wget which \
   # Python build dependencies
   pkg-config dnf-plugins-core gcc gcc-c++ gdb lzma glibc-devel \
