@@ -3,13 +3,15 @@ FROM registry.fedoraproject.org/fedora:42.20250718.0@sha256:8f9a6d75762c70b9366d
 ARG PYTHON_VERSION="3.13.7"
 
 RUN --mount=type=bind,source=./config,target=/config,readonly \
+  # Load env vars
+  bash "/config/vars.env" && \
   # Reconfigure dnf
   cat "/config/dnf.conf" >| /etc/dnf/dnf.conf && \
   dnf distro-sync -y && \
   # Install miscellaneous dev tools
   dnf install @c-development @development-tools \
-  automake bash-completion bat btop ca-certificates clang curl git git-lfs \
-  iputils jq kernel-devel upgrade llvm lsof make man man-db man-pages nano \
+  automake bash-completion bat btop ca-certificates clang curl git git-lfs go \
+  iputils jq kernel-devel libgit2 llvm lsof make man man-db man-pages nano \
   openssl opentofu perl perl-devel p7zip rustup ugrep vim wget which zlib \
   # Python build dependencies
   pkg-config dnf-plugins-core gcc gcc-c++ gdb lzma glibc-devel \
@@ -37,13 +39,16 @@ WORKDIR /workspaces
 COPY ./.devcontainer.json /home/lucy/devcontainer.json
 
 RUN --mount=type=bind,source=./config,target=/config,readonly \
+  # Load env vars
+  bash "/config/vars.env"  && \
   mkdir mkdir ~/.homebrew && \
   # Setup homebrew
   curl -L https://github.com/Homebrew/brew/tarball/master | tar xz --strip 1 -C ~/.homebrew && \
   cat "/config/brew.bashrc" >> ~/.bashrc && \
   . ~/.bashrc && \
-  # Setup ASDF
+  # Brew install misc dev tools
   brew install asdf eza --force-bottle && \
+  # Configure Asdf aliases
   cat "/config/asdf.bashrc" >> ~/.bashrc && \
   . ~/.bashrc && \
   # Setup rust
@@ -62,6 +67,7 @@ RUN --mount=type=bind,source=./config,target=/config,readonly \
   # Python development tooling
   pipx install --pip-args=--no-cache-dir --python "$(which python)" nox[uv] uv && \
   pipx ensurepath && \
-  cat "/config/general.bashrc" >> ~/.bashrc
+  cat "/config/general.bashrc" >> ~/.bashrc && \
+  cat "/config/vars.env" >> ~/.bashrc
   # TODO: Pre-install vscode server to lower initial connect time.
   # sh /workspaces/.install_vs_server.sh && \
