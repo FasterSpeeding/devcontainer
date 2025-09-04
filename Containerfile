@@ -3,24 +3,24 @@ FROM registry.fedoraproject.org/fedora:42.20250718.0@sha256:8f9a6d75762c70b9366d
 ARG PYTHON_VERSION="3.13.7"
 
 RUN --mount=type=bind,source=./config,target=/config,readonly \
-  # Load env vars
-  bash "/config/vars.env" && \
-  # Reconfigure dnf
-  cat "/config/dnf.conf" >| /etc/dnf/dnf.conf && \
-  dnf distro-sync -y && \
+  # Set global configuration
+  bash /config/vars.bash && \
+  cat /config/dnf.conf >| /etc/dnf/dnf.conf && \
+  mkdir --parents /etc/mise && \
+  cat >> /etc/mise/config.toml && \
   # Install miscellaneous dev tools
+  dnf distro-sync -y && \
+  dnf copr enable jdxcode/mise -y && \
   dnf install @c-development @development-tools \
-  automake bash-completion bat btop ca-certificates clang curl git git-lfs go \
-  iputils jq kernel-devel libgit2 llvm lsof make man man-db man-pages nano \
-  openssl opentofu perl perl-devel p7zip rustup ugrep vim wget which zlib \
+  automake bash-completion bat btop ca-certificates clang curl git git-lfs \
+  iputils jq kernel-devel llvm lsof make man man-db man-pages mise nano \
+  openssl opentofu p7zip rustup ugrep vim wget which zlib \
   # Python build dependencies
   pkg-config dnf-plugins-core gcc gcc-c++ gdb lzma glibc-devel \
   libstdc++-devel openssl-devel readline-devel zlib-devel libffi-devel \
   bzip2-devel xz-devel sqlite sqlite-devel sqlite-libs libuuid-devel \
   gdbm-libs perf expat expat-devel mpdecimal -y && \
   dnf builddep python3 -y && \
-  # Python development tools
-  dnf install pipx -y && \
   # Update man pages
   mandb && \
   # Cleanup DNF caches
@@ -39,35 +39,20 @@ WORKDIR /workspaces
 COPY ./.devcontainer.json /home/lucy/devcontainer.json
 
 RUN --mount=type=bind,source=./config,target=/config,readonly \
-  # Load env vars
-  bash "/config/vars.env"  && \
+  # Install homebrew
   mkdir mkdir ~/.homebrew && \
-  # Setup homebrew
   curl -L https://github.com/Homebrew/brew/tarball/master | tar xz --strip 1 -C ~/.homebrew && \
-  cat "/config/brew.bashrc" >> ~/.bashrc && \
+  # Setup environment variables
+  cat /config/general.bashrc >> ~/.bashrc && \
+  cat /config/vars.bash >> ~/.bashrc && \
   . ~/.bashrc && \
-  # Brew install misc dev tools
-  brew install --force-bottle asdf eza && \
-  # Configure Asdf aliases
-  cat "/config/asdf.bashrc" >> ~/.bashrc && \
-  . ~/.bashrc && \
-  # Setup rust
-  rustup-init --profile minimal --component clippy --component rustfmt -y && \
-  cat "/config/rust.bashrc" >> ~/.bashrc && \
-  # Install Eza
-  # cargo install eza && \
-  # Install languages through Asdf
-  asdf plugin-add python && \
-  # Switch "$PYTHON_VERSION" to "latest" once https://github.com/asdf-community/asdf-python/issues/191 is fixed.
-  asdf install python $PYTHON_VERSION && \
-  asdf global python $PYTHON_VERSION && \
-  asdf plugin add nodejs https://github.com/asdf-vm/asdf-nodejs.git && \
-  asdf install nodejs latest && \
-  asdf global nodejs latest && \
-  # Python development tooling
-  pipx install --pip-args=--no-cache-dir --python "$(which python)" nox[uv] uv && \
-  pipx ensurepath && \
-  cat "/config/general.bashrc" >> ~/.bashrc && \
-  cat "/config/vars.env" >> ~/.bashrc
+  # Post homebrew install setup
+  brew update --force && \
+  chmod -R go-w "$(brew --prefix)/share/bash" && \
+  # Install langauges and dev tooling
+  mise install -y && \
+  mise cache clear && \
+  uvx install --no-cache nox[uv] && \
+  cargo install eza
   # TODO: Pre-install vscode server to lower initial connect time.
   # sh /workspaces/.install_vs_server.sh && \
