@@ -11,6 +11,5 @@ alias ll='eza -l --icons=auto --group-directories-first'
 alias ls='eza'
 
 # Extend PATH
-. $HOME/.cargo/env
 eval "$($HOME/.homebrew/brew shellenv)"
 eval "$(mise activate bash)"
