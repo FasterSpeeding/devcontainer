@@ -5,12 +5,12 @@ ARG PYTHON_VERSION="3.13.7"
 RUN --mount=type=bind,source=./config,target=/config,readonly \
   # Reconfigure dnf
   cat "/config/dnf.conf" >| /etc/dnf/dnf.conf && \
-  dnf update -y && \
+  dnf distro-sync -y && \
   # Install miscellaneous dev tools
   dnf install @c-development @development-tools \
   automake bash-completion bat btop ca-certificates clang curl git git-lfs \
-  iputils jq kernel-devel llvm lsof make man man-db man-pages nano openssl \
-  opentofu perl perl-devel p7zip rustup ugrep vim wget which zlib \
+  iputils jq kernel-devel upgrade llvm lsof make man man-db man-pages nano \
+  openssl opentofu perl perl-devel p7zip rustup ugrep vim wget which zlib \
   # Python build dependencies
   pkg-config dnf-plugins-core gcc gcc-c++ gdb lzma glibc-devel \
   libstdc++-devel openssl-devel readline-devel zlib-devel libffi-devel \
@@ -22,6 +22,7 @@ RUN --mount=type=bind,source=./config,target=/config,readonly \
   # Update man pages
   mandb && \
   # Cleanup DNF caches
+  dnf autoremove && \
   dnf clean all
 
 RUN useradd -ms /bin/bash lucy && \
