@@ -47,7 +47,7 @@ RUN --mount=type=bind,source=./config,target=/config,readonly \
   cat "/config/brew.bashrc" >> ~/.bashrc && \
   . ~/.bashrc && \
   # Brew install misc dev tools
-  brew install asdf eza --force-bottle && \
+  brew install --force-bottle asdf eza && \
   # Configure Asdf aliases
   cat "/config/asdf.bashrc" >> ~/.bashrc && \
   . ~/.bashrc && \
