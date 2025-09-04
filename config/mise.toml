@@ -7,6 +7,8 @@ rust = { version = "latest", components = "rustc,cargo,rustfmt,rust-docs,rust-an
 # Plugins
 kotlin = "latest"
 uv = "latest"
+"cargo:eza" = "latest"
+"pipx:nox[uv]" = "latest"
 
 [settings]
 activate_aggressive = true

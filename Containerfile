@@ -46,15 +46,12 @@ RUN --mount=type=bind,source=./config,target=/config,readonly \
   chmod -R go-w ~/.homebrew/share/zsh && \
   # Sync mise config to install languages and dev tooling
   mise install -y && \
-  mise cache clear && \
+  mise cache clear -y && \
   mkdir -p ~/.local/share/bash-completion/completions && \
-  mise completion bash --include-bash-completion-lib > ~/.local/share/bash-completion/completions/mise && \
+  mise completion bash > ~/.local/share/bash-completion/completions/mise && \
   # Setup environment variables
   cat /config/general.bashrc >> ~/.bashrc && \
   cat /config/vars.bash >> ~/.bashrc && \
-  . ~/.bashrc && \
-  # Install misc tooling
-  uvx install --no-cache nox[uv] && \
-  cargo install eza
+  . ~/.bashrc
   # TODO: Pre-install vscode server to lower initial connect time.
   # sh /workspaces/.install_vs_server.sh && \
