@@ -48,7 +48,7 @@ RUN --mount=type=bind,source=./config,target=/config,readonly \
   . ~/.bashrc && \
   # Post homebrew install setup
   brew update --force && \
-  chmod -R go-w "$(brew --prefix)/share/bash" && \
+  chmod -R go-w "$(brew --prefix)/share/zsh" && \
   # Install langauges and dev tooling
   mise install -y && \
   mise cache clear && \
