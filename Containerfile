@@ -42,14 +42,14 @@ RUN --mount=type=bind,source=./config,target=/config,readonly \
   cat "/config/brew.bashrc" >> ~/.bashrc && \
   . ~/.bashrc && \
   # Setup ASDF
-  brew install asdf && \
+  brew install asdf eza --force-bottle && \
   cat "/config/asdf.bashrc" >> ~/.bashrc && \
   . ~/.bashrc && \
   # Setup rust
   rustup-init --profile minimal --component clippy --component rustfmt -y && \
   cat "/config/rust.bashrc" >> ~/.bashrc && \
   # Install Eza
-  cargo install eza && \
+  # cargo install eza && \
   # Install languages through Asdf
   asdf plugin-add python && \
   # Switch "$PYTHON_VERSION" to "latest" once https://github.com/asdf-community/asdf-python/issues/191 is fixed.
