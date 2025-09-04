@@ -42,16 +42,18 @@ RUN --mount=type=bind,source=./config,target=/config,readonly \
   # Install homebrew
   mkdir mkdir ~/.homebrew && \
   curl -L https://github.com/Homebrew/brew/tarball/master | tar xz --strip 1 -C ~/.homebrew && \
+  ~/.homebrew/bin/brew update --force && \
+  chmod -R go-w ~/.homebrew/share/zsh && \
+  # Sync mise config to install languages and dev tooling
+  mise install -y && \
+  mise cache clear && \
+  mkdir -p ~/.local/share/bash-completion/ && \
+  mise completion bash --include-bash-completion-lib > ~/.local/share/bash-completion/completions/mise && \
   # Setup environment variables
   cat /config/general.bashrc >> ~/.bashrc && \
   cat /config/vars.bash >> ~/.bashrc && \
   . ~/.bashrc && \
-  # Post homebrew install setup
-  brew update --force && \
-  chmod -R go-w "$(brew --prefix)/share/zsh" && \
-  # Install langauges and dev tooling
-  mise install -y && \
-  mise cache clear && \
+  # Install misc tooling
   uvx install --no-cache nox[uv] && \
   cargo install eza
   # TODO: Pre-install vscode server to lower initial connect time.
