@@ -14,7 +14,7 @@ RUN --mount=type=bind,source=./config,target=/config,readonly \
   dnf install @c-development @development-tools \
   automake bash-completion bat btop ca-certificates clang curl git git-lfs \
   iputils jq kernel-devel llvm lsof make man man-db man-pages mise nano \
-  openssl opentofu p7zip rustup ugrep vim wget which zlib \
+  openssl opentofu ps p7zip rustup ugrep vim wget which zlib \
   # Python build dependencies
   pkg-config dnf-plugins-core gcc gcc-c++ gdb lzma glibc-devel \
   libstdc++-devel openssl-devel readline-devel zlib-devel libffi-devel \
