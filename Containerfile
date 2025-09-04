@@ -7,7 +7,7 @@ RUN --mount=type=bind,source=./config,target=/config,readonly \
   bash /config/vars.bash && \
   cat /config/dnf.conf >| /etc/dnf/dnf.conf && \
   mkdir --parents /etc/mise && \
-  cat >> /etc/mise/config.toml && \
+  cat /config/mise.toml >> /etc/mise/config.toml && \
   # Install miscellaneous dev tools
   dnf distro-sync -y && \
   dnf copr enable jdxcode/mise -y && \
