@@ -47,7 +47,7 @@ RUN --mount=type=bind,source=./config,target=/config,readonly \
   # Sync mise config to install languages and dev tooling
   mise install -y && \
   mise cache clear && \
-  mkdir -p ~/.local/share/bash-completion/ && \
+  mkdir -p ~/.local/share/bash-completion/completions && \
   mise completion bash --include-bash-completion-lib > ~/.local/share/bash-completion/completions/mise && \
   # Setup environment variables
   cat /config/general.bashrc >> ~/.bashrc && \
