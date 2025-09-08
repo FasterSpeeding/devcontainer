@@ -21,7 +21,6 @@ RUN --mount=type=bind,source=./config,target=/config,readonly \
   bzip2-devel xz-devel sqlite sqlite-devel sqlite-libs libuuid-devel \
   gdbm-libs perf expat expat-devel mpdecimal -y && \
   dnf builddep python3 -y && \
-  bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)" && \
   # Update man pages
   mandb && \
   # Cleanup DNF caches
@@ -40,6 +39,12 @@ WORKDIR /workspaces
 COPY ./.devcontainer.json /home/lucy/devcontainer.json
 
 RUN --mount=type=bind,source=./config,target=/config,readonly \
+  # Setup brew
+  mkdir ~/.homebrew && \
+  curl -L https://github.com/Homebrew/brew/tarball/main | tar xz --strip-components 1 -C ~/.homebrew && \
+  eval "$(~/.homebrew/bin/brew shellenv)" && \
+  brew update --force && \
+  brew cleanup --prune=all && \
   # Sync mise config to install languages and dev tooling
   mise install -y && \
   mise cache clear -y && \
