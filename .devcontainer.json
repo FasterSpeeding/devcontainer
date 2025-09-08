@@ -1,6 +1,6 @@
 {
     "name": "Devcontainer repo",
-    "image": "ghcr.io/fasterspeeding/devcontainer:master",
+    "image": "ghcr.io/fasterspeeding/devcontainer:master@sha256:e659eb43412ab418539edd26749db6f539d3592cf38c07b4e65a5fe3a0d5ce40",
     "customizations": {
         "vscode": {
             "extensions": [
