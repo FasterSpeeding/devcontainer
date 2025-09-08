@@ -21,5 +21,5 @@ jobs:
       packages: write
       id-token: write
 
-    uses: FasterSpeeding/Piped/.github/workflows/build-container.yml@b4780e93ebb127d9fc649702fa8fdd8170671ac2
+    uses: FasterSpeeding/Piped/.github/workflows/build-container.yml@d19d7341ef655ff54d8c6f7bcd92c544872944a5
     secrets: inherit
