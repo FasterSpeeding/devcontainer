@@ -1,18 +1,20 @@
 [tools]
-# Core
+# Languages
 go = "1.25.1"
 java = "openjdk-24.0.0"
 node = "24.7.0"
 python = "3.13.7"
 rust = { version = "1.89.0", components = "rustc,cargo,rustfmt,rust-docs,rust-analyzer,clippy" }
-# Plugins
 kotlin = "2.2.0"
+# Build tools and dependencies
+cmake = "4.1"
+#make = "4.4"
+sqlite = "3.50.4"
+# CLI and Dev tools
 bat = "0.25.0"
 btop = "1.4.0"
-cmake = "4.1"
 "cargo:eza" = "0.23.0"
 jq = "1.8.1"
-#make = "4.4"
 neovim = "0.11.4"
 "pipx:nox[uv]" = "2025.5.1"
 opentofu = "1.10.6"
