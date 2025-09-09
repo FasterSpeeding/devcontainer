@@ -12,9 +12,9 @@ RUN --mount=type=bind,source=./config,target=/config,readonly \
   dnf distro-sync -y && \
   dnf copr enable jdxcode/mise -y && \
   dnf install @c-development @development-tools \
-  automake bash-completion bat btop ca-certificates clang curl git git-lfs \
-  go iputils jq kernel-devel llvm lsof make man man-db man-pages mise nano \
-  openssl opentofu ps p7zip rustup ugrep vim wget which zlib -y && \
+  automake bash-completion ca-certificates clang curl git git-lfs \
+  iputils kernel-devel llvm lsof make man man-db man-pages mise nano \
+  openssl ps p7zip ugrep wget which zlib && \
   # Update man pages
   mandb && \
   # Cleanup DNF caches
