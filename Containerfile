@@ -14,7 +14,7 @@ RUN --mount=type=bind,source=./config,target=/config,readonly \
   dnf install @c-development @development-tools \
   automake bash-completion ca-certificates curl git git-lfs \
   iputils kernel-devel lsof make man man-db man-pages mise nano \
-  openssl ps p7zip ugrep wget which zlib && \
+  openssl ps p7zip ugrep wget which zlib -y && \
   # Update man pages
   mandb && \
   # Cleanup DNF caches
