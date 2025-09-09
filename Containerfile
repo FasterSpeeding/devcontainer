@@ -15,12 +15,6 @@ RUN --mount=type=bind,source=./config,target=/config,readonly \
   automake bash-completion bat btop ca-certificates clang curl git git-lfs \
   go iputils jq kernel-devel llvm lsof make man man-db man-pages mise nano \
   openssl opentofu ps p7zip rustup ugrep vim wget which zlib \
-  # Python build dependencies
-  pkg-config dnf-plugins-core gcc gcc-c++ gdb lzma glibc-devel \
-  libstdc++-devel openssl-devel readline-devel zlib-devel libffi-devel \
-  bzip2-devel xz-devel sqlite sqlite-devel sqlite-libs libuuid-devel \
-  gdbm-libs perf expat expat-devel mpdecimal -y && \
-  dnf builddep python3 -y && \
   # Update man pages
   mandb && \
   # Cleanup DNF caches
