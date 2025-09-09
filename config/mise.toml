@@ -9,7 +9,7 @@ rust = { version = "1.89.0", components = "rustc,cargo,rustfmt,rust-docs,rust-an
 kotlin = "2.2.0"
 uv = "0.8.15"
 "cargo:eza" = "0.23.0"
-"pipx:nox[uv]" = "2025.2.9"
+"pipx:nox[uv]" = "2025.5.1"
 
 [settings]
 activate_aggressive = true
