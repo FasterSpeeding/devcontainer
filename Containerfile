@@ -14,7 +14,7 @@ RUN --mount=type=bind,source=./config,target=/config,readonly \
   dnf install @c-development @development-tools \
   automake bash-completion bat btop ca-certificates clang curl git git-lfs \
   go iputils jq kernel-devel llvm lsof make man man-db man-pages mise nano \
-  openssl opentofu ps p7zip rustup ugrep vim wget which zlib \
+  openssl opentofu ps p7zip rustup ugrep vim wget which zlib -y \
   # Update man pages
   mandb && \
   # Cleanup DNF caches
