@@ -9,6 +9,7 @@ kotlin = "2.2.0"
 # Build tools and dependencies
 clang = "21.1.0"
 cmake = "4.1"
+cosign = "2.5.3"
 #make = "4.4"
 sqlite = "3.50.4"
 # CLI and Dev tools
