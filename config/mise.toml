@@ -7,9 +7,16 @@ python = "3.12.1"
 rust = { version = "1.82.0", components = "rustc,cargo,rustfmt,rust-docs,rust-analyzer,clippy" }
 # Plugins
 kotlin = "2.2.0"
-uv = "0.8.15"
+bat = "0.25.0"
+btop = "1.4.0"
+cmake = "4.1"
 "cargo:eza" = "0.23.0"
+jq = "1.8.1"
+make = "4.4"
+neovim = "0.11.4"
 "pipx:nox[uv]" = "2025.2.9"
+opentofu = "1.10.6"
+uv = "0.8.15"
 
 [settings]
 activate_aggressive = true
