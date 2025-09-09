@@ -8,13 +8,17 @@ RUN --mount=type=bind,source=./config,target=/config,readonly \
   cat /config/dnf.conf >| /etc/dnf/dnf.conf && \
   mkdir --parents /etc/mise && \
   cat /config/mise.toml >> /etc/mise/config.toml && \
-  # Install miscellaneous dev tools
+  # Install generic build tools
   dnf distro-sync -y && \
   dnf copr enable jdxcode/mise -y && \
-  dnf install @c-development @development-tools \
-  automake bash-completion ca-certificates curl git git-lfs \
-  iputils kernel-devel lsof make man man-db man-pages mise nano \
-  openssl ps p7zip ugrep wget which zlib -y && \
+  dnf install @c-development @development-tools automake ca-certificates
+  cmake gcc kernel-devel llvm make openssl \
+  # Install Python build dependencies
+  bzip2 bzip2-devel gdbm-libs libffi-devel libnsl2 libuuid-devel
+  readline-devel sqlite-devel tk-devel xz-devel zlib-devel zstd-devel
+  # Install User tools
+  bash-completion curl git git-lfs iputils lsof man man-db
+  man-pages mise nano ps p7zip ugrep wget which zlib -y && \
   # Update man pages
   mandb && \
   # Cleanup DNF caches
