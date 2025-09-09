@@ -13,7 +13,7 @@ RUN --mount=type=bind,source=./config,target=/config,readonly \
   dnf copr enable jdxcode/mise -y && \
   dnf install @c-development @development-tools \
   automake bash-completion ca-certificates clang curl git git-lfs \
-  iputils kernel-devel llvm lsof man man-db man-pages mise nano \
+  iputils kernel-devel llvm lsof make man man-db man-pages mise nano \
   openssl ps p7zip ugrep wget which zlib \
   # Python build dependencies
   pkg-config dnf-plugins-core gcc gcc-c++ gdb lzma glibc-devel \
