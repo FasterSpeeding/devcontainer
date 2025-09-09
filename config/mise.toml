@@ -1,14 +1,14 @@
 [tools]
 # Core
-java = "latest"
-node = "lts"
-python = "latest"
-rust = { version = "latest", components = "rustc,cargo,rustfmt,rust-docs,rust-analyzer,clippy" }
+java = "java@openjdk-21.0"
+node = "24.5.0"
+python = "3.12.1"
+rust = { version = "1.80", components = "rustc,cargo,rustfmt,rust-docs,rust-analyzer,clippy" }
 # Plugins
-kotlin = "latest"
-uv = "latest"
-"cargo:eza" = "latest"
-"pipx:nox[uv]" = "latest"
+kotlin = "2.2.0"
+uv = "0.8.15"
+"cargo:eza" = "v0.23.0"
+"pipx:nox[uv]" = "2025.2.9"
 
 [settings]
 activate_aggressive = true
