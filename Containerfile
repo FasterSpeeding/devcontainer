@@ -12,7 +12,7 @@ RUN --mount=type=bind,source=./config,target=/config,readonly \
   dnf distro-sync -y && \
   dnf copr enable jdxcode/mise -y && \
   dnf install @c-development @development-tools \
-  automake ca-certificates gcc gettext kernel-devel openssl \
+  automake ca-certificates gcc kernel-devel nano openssl \
   # Install Python build dependencies
   bzip2 bzip2-devel gdbm-libs libffi-devel libnsl2 libuuid-devel \
   libzstd-devel llvm readline-devel sqlite-devel tk-devel xz-devel zlib-devel \
