@@ -46,10 +46,9 @@ RUN --mount=type=bind,source=./config,target=/config,readonly \
   # Sync mise config to install languages and dev tooling
   # GPG keys needed to verify make
   gpg --keyserver keys.gnupg.net --recv-keys 96B047156338B6D4 80CB727A20C79BB2 && \
-  mise install -y cmake make && \
-  . ~/.bashrc && \
+  mise install -y cmake make ninja && \
+  eval "$(mise activate bash)"
   mise install -y clang cosign && \
-  . ~/.bashrc && \
   mise install -y && \
   mise cache clear -y && \
   mkdir -p ~/.local/share/bash-completion/completions && \
