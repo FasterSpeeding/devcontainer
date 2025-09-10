@@ -15,7 +15,7 @@ RUN --mount=type=bind,source=./config,target=/config,readonly \
   automake ca-certificates gcc kernel-devel llvm openssl \
   # Install Python build dependencies
   bzip2 bzip2-devel gdbm-libs libffi-devel libnsl2 libuuid-devel \
-  readline-devel sqlite-devel tk-devel xz-devel zlib-devel zstd-devel \
+  libzstd-devel readline-devel sqlite-devel tk-devel xz-devel zlib-devel \
   # Install User tools
   bash-completion curl iputils lsof man man-db \
   man-pages mise nano ps p7zip ugrep wget which zlib -y && \
