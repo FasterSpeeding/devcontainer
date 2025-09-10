@@ -11,7 +11,7 @@ RUN --mount=type=bind,source=./config,target=/config,readonly \
   # Install generic build tools
   dnf distro-sync -y && \
   dnf copr enable jdxcode/mise -y && \
-  dnf install @c-development @development-tools
+  dnf install @c-development @development-tools \
   automake ca-certificates gcc kernel-devel llvm openssl \
   # Install Python build dependencies
   bzip2 bzip2-devel gdbm-libs libffi-devel libnsl2 libuuid-devel \
