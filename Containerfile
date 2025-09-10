@@ -44,6 +44,8 @@ RUN --mount=type=bind,source=./config,target=/config,readonly \
   brew update --force && \
   brew cleanup --prune=all && \
   # Sync mise config to install languages and dev tooling
+  gpg --keyserver keys.gnupg.net --recv-keys 96B047156338B6D4 80CB727A20C79BB2  # Needed to verify make
+
   mise install -y cmake cosign llvm make && \
   mise install -y && \
   mise cache clear -y && \
