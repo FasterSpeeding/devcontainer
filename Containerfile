@@ -15,7 +15,7 @@ RUN --mount=type=bind,source=./config,target=/config,readonly \
   automake ca-certificates gcc kernel-devel openssl \
   # Install Python build dependencies
   bzip2 bzip2-devel gdbm-libs libffi-devel libnsl2 libuuid-devel \
-  libzstd-devel readline-devel sqlite-devel tk-devel xz-devel zlib-devel \
+  libzstd-devel llvm readline-devel sqlite-devel tk-devel xz-devel zlib-devel \
   # Install User tools
   bash-completion curl iputils lsof man man-db \
   man-pages mise nano ps p7zip ugrep wget which zlib -y && \
@@ -46,9 +46,8 @@ RUN --mount=type=bind,source=./config,target=/config,readonly \
   # Sync mise config to install languages and dev tooling
   # GPG keys needed to verify make
   gpg --keyserver keys.gnupg.net --recv-keys 96B047156338B6D4 80CB727A20C79BB2 && \
-  mise install -y cmake make ninja && \
+  mise install -y cmake make ninja cosign && \
   eval "$(mise activate bash)" && \
-  mise install -y clang cosign && \
   mise install -y && \
   mise cache clear -y && \
   mkdir -p ~/.local/share/bash-completion/completions && \
