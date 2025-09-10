@@ -17,7 +17,7 @@ RUN --mount=type=bind,source=./config,target=/config,readonly \
   bzip2 bzip2-devel gdbm-libs libffi-devel libnsl2 libuuid-devel \
   readline-devel sqlite-devel tk-devel xz-devel zlib-devel zstd-devel \
   # Install User tools
-  bash-completion curl git git-lfs iputils lsof man man-db
+  bash-completion curl iputils lsof man man-db \
   man-pages mise nano ps p7zip ugrep wget which zlib -y && \
   # Update man pages
   mandb && \
