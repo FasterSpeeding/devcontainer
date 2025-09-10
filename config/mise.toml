@@ -19,7 +19,7 @@ neovim = "0.11.4"
 ninja = "1.13.1"
 "pipx:nox[uv]" = "2025.5.1"
 opentofu = "1.10.6"
-uv = "0.8.16"
+uv = "0.8.17"
 
 [settings]
 activate_aggressive = true
