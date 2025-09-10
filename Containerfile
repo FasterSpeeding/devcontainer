@@ -18,7 +18,7 @@ RUN --mount=type=bind,source=./config,target=/config,readonly \
   libzstd-devel llvm readline-devel sqlite-devel tk-devel xz-devel zlib-devel \
   # Install User tools
   bash-completion curl iputils lsof man man-db \
-  man-pages mise nano ps p7zip ugrep wget which zlib -y && \
+  man-pages mise ps p7zip ugrep wget which zlib -y && \
   # Update man pages
   mandb && \
   # Cleanup DNF caches
