@@ -44,7 +44,7 @@ RUN --mount=type=bind,source=./config,target=/config,readonly \
   brew update --force && \
   brew cleanup --prune=all && \
   # Sync mise config to install languages and dev tooling
-  miss install -y cmake cosign make && \
+  mise install -y cmake cosign make && \
   mise install -y && \
   mise cache clear -y && \
   mkdir -p ~/.local/share/bash-completion/completions && \
