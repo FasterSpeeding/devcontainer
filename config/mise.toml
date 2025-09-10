@@ -9,7 +9,6 @@ kotlin = "2.2.0"
 # CLI and Dev tools
 bat = "0.25.0"
 btop = "1.4.0"
-clang = "21.1.0"
 cmake = "4.1"
 cosign = "2.5.3"
 "cargo:eza" = "0.23.0"
