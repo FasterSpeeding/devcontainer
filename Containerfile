@@ -11,8 +11,8 @@ RUN --mount=type=bind,source=./config,target=/config,readonly \
   # Install generic build tools
   dnf distro-sync -y && \
   dnf copr enable jdxcode/mise -y && \
-  dnf install @c-development @development-tools automake ca-certificates \
-  cmake cosign gcc kernel-devel llvm make openssl \
+  dnf install @c-development @development-tools
+  automake ca-certificates gcc kernel-devel llvm openssl \
   # Install Python build dependencies
   bzip2 bzip2-devel gdbm-libs libffi-devel libnsl2 libuuid-devel \
   readline-devel sqlite-devel tk-devel xz-devel zlib-devel zstd-devel \
@@ -44,6 +44,7 @@ RUN --mount=type=bind,source=./config,target=/config,readonly \
   brew update --force && \
   brew cleanup --prune=all && \
   # Sync mise config to install languages and dev tooling
+  miss install -y cmake cosign make && \
   mise install -y && \
   mise cache clear -y && \
   mkdir -p ~/.local/share/bash-completion/completions && \
