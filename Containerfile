@@ -2,12 +2,9 @@ FROM registry.fedoraproject.org/fedora:42@sha256:d331c2ccd10a84897b69771e46fac85
 
 ARG PYTHON_VERSION="3.13.7"
 
-RUN --mount=type=bind,source=./config,target=/config,readonly \
+RUN --mount=type=bind,source=./artifacts,target=/artifacts,readonly \
   # Set global configuration
-  bash /config/vars.bash && \
-  cat /config/dnf.conf >| /etc/dnf/dnf.conf && \
-  mkdir --parents /etc/mise && \
-  cat /config/mise.toml >> /etc/mise/config.toml && \
+  cat /artifacts/dnf.conf >| /etc/dnf/dnf.conf && \
   # Install generic build tools
   dnf distro-sync -y && \
   dnf copr enable jdxcode/mise -y && \
@@ -20,7 +17,7 @@ RUN --mount=type=bind,source=./config,target=/config,readonly \
   bash-completion curl iputils lsof man man-db \
   man-pages mise ps p7zip ugrep wget which zlib -y && \
   # Update man pages
-  mandb && \
+  # mandb && \
   # Cleanup DNF caches
   dnf autoremove && \
   dnf clean all
@@ -36,7 +33,11 @@ WORKDIR /workspaces
 # COPY --chown=lucy install_vs_server.sh /workspaces/.install_vs_server.sh
 COPY ./.devcontainer.json /home/lucy/devcontainer.json
 
-RUN --mount=type=bind,source=./config,target=/config,readonly \
+RUN --mount=type=bind,source=./artifacts,target=/artifacts,readonly \
+  # Copy over user config
+  mkdir -p ~/.config && \
+  cp -rv /artifacts/config/* ~/.config/ && \
+  cat /artifacts/extend.bash >> ~/.bashrc && \
   # Setup brew
   mkdir ~/.homebrew && \
   curl -L https://github.com/Homebrew/brew/tarball/main | tar xz --strip-components 1 -C ~/.homebrew && \
@@ -51,10 +52,6 @@ RUN --mount=type=bind,source=./config,target=/config,readonly \
   mise install -y && \
   mise cache clear -y && \
   mkdir -p ~/.local/share/bash-completion/completions && \
-  mise completion bash > ~/.local/share/bash-completion/completions/mise && \
-  # Setup environment variables
-  cat /config/general.bashrc >> ~/.bashrc && \
-  cat /config/vars.bash >> ~/.bashrc && \
-  . ~/.bashrc
+  mise completion bash > ~/.local/share/bash-completion/completions/mise
   # TODO: Pre-install vscode server to lower initial connect time.
   # sh /workspaces/.install_vs_server.sh && \

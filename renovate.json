@@ -3,6 +3,9 @@
   "extends": [
     "github>FasterSpeeding/Piped//config/renovate.json"
   ],
+  "mise": {
+    "managerFilePatterns": ["/^artifacts/\\.config/mise/config\\.yaml$/"]
+  },
   "packageRules": [
     {
       "matchFileNames": [
