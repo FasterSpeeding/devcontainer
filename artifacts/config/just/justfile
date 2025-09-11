@@ -1,0 +1,4 @@
+set shell := ["bash", "-uc"]
+
+test:
+    echo "Just is setup properly"
