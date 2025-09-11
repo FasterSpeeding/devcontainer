@@ -34,9 +34,10 @@ WORKDIR /workspaces
 COPY ./.devcontainer.json /home/lucy/devcontainer.json
 
 RUN --mount=type=bind,source=./artifacts,target=/artifacts,readonly \
+  # Copy over user config
   mkdir -p ~/.config && \
   cp -rv /artifacts/config/* ~/.config/ && \
-  cat /artifacts/extend.bash >> ~/.bashrc && \ && \
+  cat /artifacts/extend.bash >> ~/.bashrc && \
   # Setup brew
   mkdir ~/.homebrew && \
   curl -L https://github.com/Homebrew/brew/tarball/main | tar xz --strip-components 1 -C ~/.homebrew && \
