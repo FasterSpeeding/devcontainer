@@ -12,7 +12,7 @@ RUN --mount=type=bind,source=./artifacts,target=/artifacts,readonly \
   automake ca-certificates gcc kernel-devel nano openssl \
   # Install Python build dependencies
   bzip2 bzip2-devel gdbm-libs libffi-devel libnsl2 libuuid-devel libzstd-devel \
-  llvm readline-devel resync sqlite-devel tk-devel xz-devel zlib-devel \
+  llvm readline-devel rsync sqlite-devel tk-devel xz-devel zlib-devel \
   # Install User tools
   bash-completion curl iputils lsof man man-db \
   man-pages mise ps p7zip ugrep wget which zlib -y && \
