@@ -1,3 +1,5 @@
+# FILE SYNCED from https://github.com/FasterSpeeding/devcontainer
+
 # Misc aliases
 alias cat='bat --style=plain --pager=never'
 alias egrep='ug -E'
