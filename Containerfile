@@ -11,8 +11,8 @@ RUN --mount=type=bind,source=./artifacts,target=/artifacts,readonly \
   dnf install @c-development @development-tools \
   automake ca-certificates gcc kernel-devel nano openssl \
   # Install Python build dependencies
-  bzip2 bzip2-devel gdbm-libs libffi-devel libnsl2 libuuid-devel \
-  libzstd-devel llvm readline-devel sqlite-devel tk-devel xz-devel zlib-devel \
+  bzip2 bzip2-devel gdbm-libs libffi-devel libnsl2 libuuid-devel libzstd-devel \
+  llvm readline-devel resync sqlite-devel tk-devel xz-devel zlib-devel \
   # Install User tools
   bash-completion curl iputils lsof man man-db \
   man-pages mise ps p7zip ugrep wget which zlib -y && \
@@ -36,9 +36,9 @@ COPY ./.devcontainer.json /home/lucy/devcontainer.json
 RUN --mount=type=bind,source=./artifacts,target=/artifacts,readonly \
   # Copy over user config
   mkdir -p ~/.config && \
-  cp -rv /artifacts/config/* ~/.config/ && \
+  rsync -rtv /artifacts/config ~/.config && \
   mkdir -p ~/.bashrc.d && \
-  cp -rv /artifacts/bashrc.d/* ~/.bashrc.d/ && \
+  rsync -rtv /artifacts/bashrc.dv ~/.bashrc.d && \
   # Setup brew
   mkdir ~/.homebrew && \
   curl -L https://github.com/Homebrew/brew/tarball/main | tar xz --strip-components 1 -C ~/.homebrew && \
