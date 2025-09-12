@@ -37,7 +37,8 @@ RUN --mount=type=bind,source=./artifacts,target=/artifacts,readonly \
   # Copy over user config
   mkdir -p ~/.config && \
   cp -rv /artifacts/config/* ~/.config/ && \
-  cat /artifacts/extend.bash >> ~/.bashrc && \
+  mkdir -p ~/.bashrc.d && \
+  cp -rv /artifacts/bashrc.d/* ~/.bashrc.d/ && \
   # Setup brew
   mkdir ~/.homebrew && \
   curl -L https://github.com/Homebrew/brew/tarball/main | tar xz --strip-components 1 -C ~/.homebrew && \

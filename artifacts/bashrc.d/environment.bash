@@ -13,3 +13,6 @@ alias ls='eza'
 # Extend PATH
 eval "$($HOME/.homebrew/bin/brew shellenv)"
 eval "$(mise activate bash)"
+
+# Define user-wide environment variables.
+export HOMEBREW_NO_ANALYTICS=1
