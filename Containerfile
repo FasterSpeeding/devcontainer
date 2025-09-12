@@ -38,7 +38,7 @@ RUN --mount=type=bind,source=./artifacts,target=/artifacts,readonly \
   mkdir -p ~/.config && \
   rsync -rtv /artifacts/config ~/.config && \
   mkdir -p ~/.bashrc.d && \
-  rsync -rtv /artifacts/bashrc.dv ~/.bashrc.d && \
+  rsync -rtv /artifacts/bashrc.d ~/.bashrc.d && \
   # Setup brew
   mkdir ~/.homebrew && \
   curl -L https://github.com/Homebrew/brew/tarball/main | tar xz --strip-components 1 -C ~/.homebrew && \
