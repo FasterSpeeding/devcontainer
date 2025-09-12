@@ -1,3 +1,5 @@
+# FILE SYNCED from https://github.com/FasterSpeeding/devcontainer
+
 # Misc aliases
 alias cat='bat --style=plain --pager=never'
 alias egrep='ug -E'
@@ -9,7 +11,3 @@ alias l.='eza -d .*'
 alias l1='eza -1'
 alias ll='eza -l --icons=auto --group-directories-first'
 alias ls='eza'
-
-# Extend PATH
-eval "$($HOME/.homebrew/bin/brew shellenv)"
-eval "$(mise activate bash)"

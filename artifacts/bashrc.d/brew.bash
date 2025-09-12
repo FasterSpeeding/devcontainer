@@ -1,5 +1,3 @@
 # FILE SYNCED from https://github.com/FasterSpeeding/devcontainer
 
-# see `man dnf.conf` for defaults and possible options
-
-[main]
+eval "$($HOME/.homebrew/bin/brew shellenv)"
