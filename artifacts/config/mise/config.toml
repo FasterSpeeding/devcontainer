@@ -22,6 +22,7 @@ neovim = "0.11.4"
 ninja = "1.13.1"
 "pipx:nox[uv]" = "2025.5.1"
 opentofu = "1.10.6"
+yq = "4.47.2"
 uv = "0.8.17"
 
 [settings]
