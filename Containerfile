@@ -1,4 +1,4 @@
-FROM registry.fedoraproject.org/fedora:42@sha256:babf2015b8d51ee33f47988c2df7cd1b5656de209c0d8a59103dba5a75bc3cd1
+FROM registry.fedoraproject.org/fedora:42@sha256:34fc7916e119916cae71e67e24c49db6a6fb3093c529404dcae968d681dc4ebc
 
 ARG PYTHON_VERSION="3.13.7"
 
