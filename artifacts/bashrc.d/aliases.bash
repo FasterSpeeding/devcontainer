@@ -1,4 +1,5 @@
-# FILE SYNCED from https://github.com/FasterSpeeding/devcontainer
+# File synced from https://github.com/FasterSpeeding/devcontainer
+# Changes will not be persisted
 
 # Misc aliases
 alias cat='bat --style=plain --pager=never'
