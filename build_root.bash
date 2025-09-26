@@ -7,8 +7,8 @@ cat ./artifacts/dnf.conf >| /etc/dnf/dnf.conf
 
 # Install generic build tools
 
-dnf distro-sync
-dnf copr enable jdxcode/mise
+dnf distro-sync -y
+dnf copr enable jdxcode/mise -y
 
 dnf install @c-development @development-tools \
     automake ca-certificates gcc kernel-devel nano openssl \
