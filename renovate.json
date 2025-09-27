@@ -16,7 +16,7 @@
     {
       "matchFileNames": ["renovate.json"],
       "matchPackageNames": ["java-jdk"],
-      "versioning": "semver-coerced"
+      "versioning": "regex:^(?<major>\\d+)?(\\.(?<minor>\\d+))?(\\.(\\d+))?([\\._+](?(\\d\\.?)+)(LTS)?)?(-(?.*))?$"
     }
   ]
 }
