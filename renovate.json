@@ -16,7 +16,7 @@
     {
       "matchFileNames": ["artifacts/config/mise/config.toml"],
       "matchPackageNames": ["java-jdk"],
-      "versioning": "regex:^(?<major>\\d+)?(\\.(?<minor>\\d+))?(\\.(\\d+))?([\\._+](?(\\d\\.?)+)(LTS)?)?(-(?.*))?$"
+      "replacementVersionTemplate": "{{ lookup (split currentVallue '+') 0 }}"
     }
   ]
 }
