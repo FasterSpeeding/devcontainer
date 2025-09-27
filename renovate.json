@@ -16,7 +16,7 @@
     {
       "matchFileNames": ["renovate.json"],
       "matchPackageNames": ["java-jdk"],
-      "replacementVersionTemplate": "{{ (split currentVallue '+')[0] }}"
+      "replacementVersionTemplate": "{{ lookup (split currentVallue '+') 0 }}"
     }
   ]
 }
