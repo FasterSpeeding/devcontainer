@@ -12,6 +12,11 @@
         ".devcontainer.json"
       ],
       "enabled": false
+    },
+    {
+      "matchFileNames": ["renovate.json"],
+      "matchPackageNames": ["java-jdk"],
+      "replacementVersionTemplate": "{{ (split currentVallue '+') 0 }}"
     }
   ]
 }
