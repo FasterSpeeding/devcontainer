@@ -14,7 +14,7 @@
       "enabled": false
     },
     {
-      "matchFileNames": ["renovate.json"],
+      "matchFileNames": ["artifacts/bashrc.d/mise.bash"],
       "matchPackageNames": ["java-jdk"],
       "versioning": "regex:^(?<major>\\d+)?(\\.(?<minor>\\d+))?(\\.(\\d+))?([\\._+](?(\\d\\.?)+)(LTS)?)?(-(?.*))?$"
     }
