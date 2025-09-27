@@ -14,7 +14,7 @@
       "enabled": false
     },
     {
-      "matchFileNames": ["artifacts/bashrc.d/mise.bash"],
+      "matchFileNames": ["artifacts/config/mise/config.toml"],
       "matchPackageNames": ["java-jdk"],
       "versioning": "regex:^(?<major>\\d+)?(\\.(?<minor>\\d+))?(\\.(\\d+))?([\\._+](?(\\d\\.?)+)(LTS)?)?(-(?.*))?$"
     }
