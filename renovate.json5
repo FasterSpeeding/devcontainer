@@ -13,7 +13,7 @@
     {
       "matchFileNames": ["artifacts/config/mise/config.toml"],
       "matchPackageNames": ["java-jdk"],
-      // Fixes OpenJDK by avoiding releases with an LTS tag in them
+      // Fixes OpenJDK compat by avoiding releases with an LTS tag in them
       "versioning": "regex:^(?<major>\\d+)?(\\.(?<minor>\\d+))?(\\.(?<patch>\\d+))?([\\._+]((\\d\\.?)+)(LTS)?)?(-(.*))?$"
     }
   ]
