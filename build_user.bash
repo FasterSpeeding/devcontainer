@@ -21,7 +21,7 @@ brew cleanup --prune=all
 # GPG keys needed to verify make
 gpg --keyserver keys.gnupg.net --recv-keys 96B047156338B6D4 80CB727A20C79BB2
 
-mise install -y cmake make ninja cosign
+mise install -y cargo-binstall cmake make ninja cosign
 
 eval "$(mise activate bash)"
 
