@@ -1,5 +1,3 @@
-Add set -eux
-
 set -eux
 
 # Set global configuration

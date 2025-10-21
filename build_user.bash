@@ -1,4 +1,4 @@
-Add set -eux
+set -eux
 
 # Copy over user config
 
