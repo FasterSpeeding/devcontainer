@@ -7,7 +7,7 @@ java = "openjdk-25.0.0"
 node = "24.9.0"
 python = "3.13.7"
 rust = { version = "1.90.0", components = "rustc,cargo,rustfmt,rust-docs,rust-analyzer,clippy" }
-kotlin = "2.2.20"
+kotlin = "2.2.21"
 # CLI and Dev tools
 bat = "0.25.0"
 btop = "1.4.0"
