@@ -2,7 +2,7 @@
 # Changes will not be persisted
 [tools]
 # Languages
-go = "1.25.3"
+go = "1.25.4"
 java = "openjdk-25.0.0"
 node = "24.9.0"
 python = "3.13.7"
