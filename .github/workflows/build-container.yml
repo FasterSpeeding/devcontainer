@@ -23,3 +23,5 @@ jobs:
 
     uses: FasterSpeeding/Piped/.github/workflows/build-container.yml@d54b1d709064c76626a2bc3efe526a6ae5ab8749
     secrets: inherit
+    with:
+      architectures: '[{\"os\":\"ubuntu-24.04\",\"architecture\":\"amd64\"}]'
