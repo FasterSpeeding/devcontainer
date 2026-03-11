@@ -40,4 +40,3 @@ plugin_autoupdate_last_check_duration = "0"
 
 [settings.python]
 compile = true
-uv_venv_auto = true
