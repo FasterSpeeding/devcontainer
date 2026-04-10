@@ -40,5 +40,4 @@ if __name__ == "__main__":
 
 # TODO:
 # Update man pages
-# mandb && \
-# Cleanup DNF caches
+# mandb
