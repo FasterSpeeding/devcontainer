@@ -4,7 +4,7 @@ ARG PYTHON_VERSION="3.13.7"
 
 RUN --mount=type=bind,source=./,target=/ctx,readonly \
   pushd /ctx && \
-  bash ./build_root.bash && \
+  python3 ./scripts/build_root.py && \
   popd
 
 RUN useradd -ms /bin/bash lucy && \
@@ -17,5 +17,5 @@ WORKDIR /workspaces
 
 RUN --mount=type=bind,source=./,target=/ctx,readonly \
   pushd /ctx && \
-  bash ./build_user.bash && \
+  python3 ./scripts/build_user.py && \
   popd
