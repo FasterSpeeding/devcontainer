@@ -1,6 +1,0 @@
-# File synced from https://github.com/FasterSpeeding/devcontainer
-# Changes will not be persisted
-set shell := ["bash", "-o", "errexit", "-uc"]
-
-test:
-    echo "Just is setup properly"
