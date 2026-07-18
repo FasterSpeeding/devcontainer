@@ -4,6 +4,7 @@
 # Languages
 go = "1.26.5"
 java = "openjdk-25.0.0"
+lua = "5.5"
 node = "24.14.1"
 python = "3.14.3"
 rust = { version = "1.94.1", components = "rustc,cargo,rustfmt,rust-docs,rust-analyzer,clippy" }
