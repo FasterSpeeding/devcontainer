@@ -10,7 +10,7 @@ python = "3.14.3"
 rust = { version = "1.97.1", components = "rustc,cargo,rustfmt,rust-docs,rust-analyzer,clippy" }
 kotlin = "2.4.10"
 # CLI and Dev tools
-bat = "0.25.0"
+bat = "0.26.1"
 btop = "1.4.7"
 cargo-binstall = "1.21.0"
 chezmoi = "2.71.0"
