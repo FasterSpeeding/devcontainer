@@ -12,7 +12,7 @@ kotlin = "2.4.10"
 # CLI and Dev tools
 bat = "0.25.0"
 btop = "1.4.7"
-cargo-binstall = "1.15.6"
+cargo-binstall = "1.21.0"
 chezmoi = "2.71.0"
 cmake = "4.4.0"
 cosign = "3.1.1"
