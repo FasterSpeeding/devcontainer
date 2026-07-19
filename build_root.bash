@@ -17,7 +17,7 @@ dnf install bzip2 bzip2-devel gdbm-libs libffi-devel libnsl2 libuuid-devel \
 
 # Install User tools
 dnf install bash-completion curl iputils lsof man man-db \
-    man-pages mise ps p7zip ugrep wget which zlib -y
+    man-pages mise ps p7zip su sudo ugrep wget which zlib -y
 
 # Update man pages
 # mandb
