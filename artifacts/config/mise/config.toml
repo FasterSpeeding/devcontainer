@@ -2,32 +2,38 @@
 # Changes will not be persisted
 [tools]
 # Languages
-go = "1.25.3"
+go = "1.26.5"
 java = "openjdk-25.0.0"
-node = "24.9.0"
-python = "3.13.7"
-rust = { version = "1.90.0", components = "rustc,cargo,rustfmt,rust-docs,rust-analyzer,clippy" }
-kotlin = "2.2.20"
+lua = "5.5"
+node = "24.20.0"
+python = "3.14.7"
+rust = { version = "1.98.0", components = "rustc,cargo,rustfmt,rust-docs,rust-analyzer,clippy" }
+kotlin = "2.4.10"
 # CLI and Dev tools
-bat = "0.25.0"
-btop = "1.4.0"
-cargo-binstall = "1.15.6"
-cmake = "4.1"
-cosign = "2.6.1"
+bat = "0.26.1"
+btop = "1.4.7"
+bun = "1.3.14"
+cargo-binstall = "1.22.0"
+chezmoi = "2.71.0"
+claude = "2.1.251"
+cmake = "4.4.3"
+cosign = "3.1.1"
 "cargo:eza" = "0.23.0"
-flux2 = "2.7.2"
-git-lfs = "3.7.0"
-helm = "3.19.0"
-jq = "1.8.1"
-just = "1.43.0"
-kubeseal = "0.32.2"
+flux2 = "2.9.2"
+git-lfs = "3.8.0"
+helm = "4.2.4"
+jq = "1.8.2"
+just = "1.58.0"
+"pipx:kseal" = "2.1.1"
+kubeseal = "0.39.1"
 make = "4.4.1"
-neovim = "0.11.4"
-ninja = "1.13.1"
-"pipx:nox[uv]" = "2025.5.1"
-opentofu = "1.10.6"
-yq = "4.47.2"
-uv = "0.8.22"
+neovim = "0.12.5"
+ninja = "1.13.2"
+"pipx:nox[uv]" = "2026.8.17"
+opentofu = "1.12.4"
+tmux = "3.7c"
+yq = "4.53.6"
+uv = "0.12.7"
 
 [settings]
 activate_aggressive = true
@@ -39,4 +45,3 @@ plugin_autoupdate_last_check_duration = "0"
 
 [settings.python]
 compile = true
-uv_venv_auto = true
